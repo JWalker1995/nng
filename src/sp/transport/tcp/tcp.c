@@ -1,5 +1,5 @@
 //
-// Copyright 2020 Staysail Systems, Inc. <info@staysail.tech>
+// Copyright 2021 Staysail Systems, Inc. <info@staysail.tech>
 // Copyright 2018 Capitar IT Group BV <info@capitar.com>
 // Copyright 2019 Devolutions <info@devolutions.net>
 //
@@ -745,6 +745,7 @@ tcptran_url_parse_source(nng_url *url, nng_sockaddr *sa, const nng_url *surl)
 
 	nni_resolv_ip(src, "0", af, true, sa, aio);
 	nni_aio_wait(aio);
+	rv = nni_aio_result(aio);
 	nni_aio_free(aio);
 	nni_free(src, len + 1);
 	return (rv);
